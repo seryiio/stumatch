@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Editar Carrera</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav class="mt-3 mx-3" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/careers}">Carreras</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Editar</li>
+		  </ol>
+		</nav>
+		
+		<div class="card text-center">
+		  <div class="card-header">
+		    Editar Curso
+		  </div>
+		  <div class="card-body" style="text-align: left;">
+		  
+			<form th:action="@{'/careers/' + ${career.id} + '/update'}" th:object="${career}" method="post" class="row g-3 needs-validation" novalidate>
+			
+				<div class="col-md-4">
+				    <label for="id" class="form-label">Codigo de Carrera</label>
+				    <input type="text" class="form-control" th:field="*{id}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-3">
+				    <label for="name" class="form-label">Nombre de la Carrera</label>
+				    <input type="text" class="form-control" th:field="*{name}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+		
+			  <div class="col-12" style="text-align: center;">
+			    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Editar</button>
+			  </div>
+			</form>
+		  
+		  </div>
+		  
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

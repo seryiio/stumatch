@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Nuevo Estudiante</title>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<main>
+
+		<section class="section">
+			<nav class="mt-3 mx-3" aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a
+						th:href="@{/students}">Estudiantes</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Crear</li>
+				</ol>
+			</nav>
+			<div class="card text-center">
+				<div class="card-header">Estudiantes</div>
+				<div class="card-body" style="text-align: left;">
+					<form th:action="@{/students/savenew}" th:object="${student}"
+						method="post" class="row g-3 needs-validation" novalidate>
+						<div class="col-md-2">
+							<label for="id" class="form-label">Codigo</label> <input
+								type="text" class="form-control" th:field="*{id}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="lastName" class="form-label">Apellidos</label> <input
+								type="text" class="form-control" th:field="*{lastName}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="firstName" class="form-label">Nombres</label> <input
+								type="text" class="form-control" th:field="*{firstName}"
+								th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></small>
+						</div>
+						<div class="col-md-2">
+							<label for="age" class="form-label">Edad</label> <input
+								type="text" class="form-control" th:field="*{age}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="dni" class="form-label">DNI</label> <input
+								type="text" class="form-control" th:field="*{dni}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="phoneNumber" class="form-label">Numero</label> <input
+								type="text" class="form-control" th:field="*{phoneNumber}"
+								th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="emailUniversity" class="form-label">Correo
+								Universitario</label> <input type="text" class="form-control"
+								th:field="*{emailUniversity}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('emailUniversity')}" th:errors="*{emailUniversity}"></small>
+						</div>
+						<div class="col-md-4">
+							<label for="emailPersonal" class="form-label">Correo
+								Personal</label> <input type="text" class="form-control"
+								th:field="*{emailPersonal}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('emailPersonal')}" th:errors="*{emailPersonal}"></small>
+						</div>
+						<div class="col-md-3">
+							<label for="career" class="form-label">Carrera</label> <select
+								class="form-select" th:field="*{career}" th:errorclass="'form-control alert-danger'">
+								<option value="">Elige una Carrera</option>
+								<option th:each="career : ${careers}" th:value="${career.id}"
+									th:text="${career.name}"></option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label for="cycle" class="form-label">Nivel de Ciclo</label> <input
+								type="number" class="form-control" th:field="*{cycle}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('cycle')}" th:errors="*{cycle}"></small>
+						</div>
+						<div class="col-md-2">
+							<label for="creditAmount" class="form-label">Cantidad de
+								Creditos Maximos</label> <input type="number" class="form-control"
+								th:field="*{creditAmount}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('creditAmount')}" th:errors="*{creditAmount}"></small>
+						</div>
+						<hr>
+						<div class="col-12" style="text-align: center;">
+							<button class="btn btn-success" type="submit">
+								<i class="fas fa-plus"></i> Crear Usuario
+							</button>
+						</div>
+					</form>
+				</div>
+
+
+			</div>
+
+		</section>
+
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

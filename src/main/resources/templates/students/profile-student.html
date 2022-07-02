@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Perfil de Estudiante</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<div class="container">
+		<form class="mt-2 mb-2">
+			<fieldset disabled>
+				<legend>Mi Perfil</legend>
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Nombres</label> <input
+						type="text" id="disabledTextInput" class="form-control"
+						th:placeholder="${student.firstName}">
+				</div>
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Apellidos</label>
+					<input type="text" id="disabledTextInput" class="form-control"
+						th:placeholder="${student.lastName}">
+				</div>
+
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Telefono</label>
+					<input type="text" id="disabledTextInput" class="form-control"
+						th:placeholder="${student.phoneNumber}">
+				</div>
+
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Correo de
+						la Universidad</label> <input type="text" id="disabledTextInput"
+						class="form-control" th:placeholder="${student.emailUniversity}">
+				</div>
+
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Correo
+						Privado</label> <input type="text" id="disabledTextInput"
+						class="form-control" th:placeholder="${student.emailPersonal}">
+				</div>
+
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">Carrera</label> <input
+						type="text" id="disabledTextInput" class="form-control"
+						th:placeholder="${student.career.name}">
+				</div>
+
+				<div class="mb-3">
+					<label for="disabledTextInput" class="form-label">DNI</label> <input
+						type="text" id="disabledTextInput" class="form-control"
+						th:placeholder="${student.dni}">
+				</div>
+			</fieldset>
+				<button type="submit" class="btn btn-primary">Modificar</button>
+		</form>
+	</div>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

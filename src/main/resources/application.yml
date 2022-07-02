@@ -1,0 +1,17 @@
+server:
+  port: 8170
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-23-23-151-191.compute-1.amazonaws.com/d9u6fbqsjsh4bl
+    username: kmotdljdaandfd
+    password: 82e0a5aa32e8d4567825043f60451343020de620da32a2443c83430786d563a7
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

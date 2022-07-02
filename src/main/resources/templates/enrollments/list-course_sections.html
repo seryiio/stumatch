@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+	<main>
+
+		<section class="section">
+			<div>
+				<div class="card-body" style="text-align: left;">
+
+					<div class="row g-3 needs-validation">
+						<div class="card text-center">
+							<div class="card-header">Lista de Secciones</div>
+							<form th:action="@{/enrollments/savenewSection}"
+								th:object="${enrollment}" method="post" class="card-body">
+
+								<table class="table">
+									<thead>
+										<tr class="table-danger">
+											<th scope="col">Codigo</th>
+											<th scope="col">Nombre</th>
+											<th scope="col">Profesor</th>
+											<th scope="col">Dia de Clase</th>
+											<th scope="col">Hora de Inicio</th>
+											<th scope="col">Hora de Finalizacion</th>
+											<th scope="col">Vacantes</th>
+											<th scope="col"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="section : ${sections}"
+											th:if="${course.id == section.course.id}">
+											<th th:text="${section.id}"></th>
+											<td th:text="${section.course.name}"></td>
+											<td
+												th:text="${section.teacher.lastName + ', ' + section.teacher.firstName }"></td>
+											<td th:text="${section.day}"></td>
+											<td th:text="${section.startTime}"></td>
+											<td th:text="${section.endTime}"></td>
+											<td th:text="${section.vacancies}"></td>
+
+
+										</tr>
+
+									</tbody>
+
+								</table>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+
+
+			</div>
+			<form th:action="@{/enrollments/savenewSection}"
+				th:object="${enrollment}" method="post"
+				class="row g-3 needs-validation justify-content-center">
+
+				<div class="col-md-3   mx-auto">
+					<label for="section" class="form-label">Codigo de la
+						Seccion</label> <select class="form-select" th:field="*{section}" required>
+						<option value="">Elige una Seccion</option>
+						<option th:each="section : ${sections}" th:value="${section.id}"
+							th:text="${section.id}" th:if="${section.course.id == course.id}"></option>
+					</select>
+				</div>
+
+				<div class="col-md-2 invisible" style="text-align: left;">
+					<label for="student" class="form-label">Alumno</label> <select
+						class="form-select" th:field="*{student}" required>
+						<option th:value="${student.id}" th:text="${student.id}"></option>
+					</select>
+				</div>
+
+				<div class="col-12 mb-4" style="text-align: center;">
+					<button class="btn btn-warning" type="submit">
+						<i class="fas fa-plus"></i> Seleccionar
+					</button>
+				</div>
+			</form>
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+	<section class="section mt-3">
+		<div class="card text-center">
+			<div class="card-header bold">
+				Reporte de Alumnos matriculados en el ciclo
+				<dt class="fs-2">2022 - 01</dt>
+			</div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr class="table-danger">
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombres</th>
+							<th scope="col">Apellidos</th>
+							<th scope="col">Correo Universitario</th>
+							<th scope="col">Correo Personal</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Ciclo</th>
+							<th scope="col">Carrera</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="report : ${reporte1}">
+							<th scope="row" th:text="${report[0]}"></th>
+							<th scope="row" th:text="${report[1]}"></th>
+							<th scope="row" th:text="${report[2]}"></th>
+							<th scope="row" th:text="${report[3]}"></th>
+							<th scope="row" th:text="${report[4]}"></th>
+							<th scope="row" th:text="${report[5]}"></th>
+							<th scope="row" th:text="${report[6]}"></th>
+							<th scope="row" th:text="${report[7]}"></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

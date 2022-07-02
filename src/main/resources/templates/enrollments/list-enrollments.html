@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+	<section>
+		<div class="card">
+			<div class="card-body row">
+				<div class="ms-2 me-auto col mt-2 mb-2">
+					<div class="fw-bold">Nombres y Apellidos:</div>
+					<p th:text="${student.firstName + ' ' + student.lastName}"></p>
+					<div class="fw-bold">Ciclo:</div>
+					<p th:text="${student.cycle}"></p>
+				</div>
+				<div class="ms-2 me-auto col mt-2 mb-2">
+					<div class="fw-bold">Carrera:</div>
+					<p th:text="${student.career.name}"></p>
+					<div class="fw-bold">Creditos Maximos:</div>
+					<p th:text="${student.creditAmount}"></p>
+				</div>
+				<div class="ms-2 me-auto col mt-2 mb-2 text-end">
+					<div class="fw-bold fs-2">MATRICULA: 2022 - 01</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="alert alert-success alert-dismissible fade show"
+		th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+		th:if="${mensaje != null}" th:text="${mensaje}">
+	</div>
+	
+	<section class="container">
+		<div class="row">
+			<div class="col card text-center ms-5 me-5 mb-3 mt-5">
+				<div class="card-header text-start" style="background-color: white">Lista
+					de Cursos</div>
+				<div class="card-body">
+					<table class="table table-bordered">
+						<thead style="background-color: #FFBFBF">
+							<tr>
+								<th scope="col">Ciclo</th>
+								<th scope="col">Creditos</th>
+								<th scope="col">Curso</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="course : ${courses}"
+								th:if="${course.career.name == student.career.name && course.numberCycle == student.cycle}">
+								<td th:text="${course.numberCycle}"></td>
+								<td th:text="${course.numberCredits}"></td>
+								<td><a class="btn"
+									th:href="@{'/enrollments/' + ${course.id} + '/select_section'}"
+									role="button"><i th:text="${course.name}"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+			<div class="col card text-center ms-5 me-5 mb-3 mt-5">
+				<div class="card-header text-start" style="background-color: white">Cursos
+					Matriculados</div>
+				<div class="card-body">
+
+					<table class="table table-striped">
+						<thead style="background-color: #FFBFBF">
+							<tr>
+								<th scope="col">Curso</th>
+								<th scope="col">Creditos</th>
+								<th scope="col">Seccion</th>
+								<th scope="col">Dia</th>
+								<th scope="col" colspan="3">Hora</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="enrollment : ${enrollments}"
+								th:if="${student.id == enrollment.student.id}">
+								<th scope="row" th:text="${enrollment.section.course.name}"></th>
+								<td th:text="${enrollment.section.course.numberCredits}"></td>
+								<td th:text="${enrollment.section.id}"></td>
+								<td th:text="${enrollment.section.day}"></td>
+								<td th:text="${enrollment.section.startTime}"></td>
+								<td>-</td>
+								<td th:text="${enrollment.section.endTime}"></td>
+								<td><a class="btn btn-danger"
+									th:href="@{'/enrollments/' + ${enrollment.id} + '/delete'}"
+									role="button"><i class="fa-solid fa-trash-can"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="text-muted d-flex justify-content-center mt-3 mb-3">
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal"
+						data-bs-target="#schedule">
+						<i class="fa-solid fa-calendar"></i> Ver Horario
+					</button>
+				</div>
+			</div>
+
+			<div class="modal fade" id="schedule" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div
+					class="modal-dialog modal-fullscreen modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Horario</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body w-5">
+							<table class="table table-bordered text-center"
+								style="color: black">
+								<thead style="background-color: #FFBFBF">
+									<tr>
+										<th scope="col">Hora</th>
+										<th scope="col">Lunes</th>
+										<th scope="col">Martes</th>
+										<th scope="col">Miercoles</th>
+										<th scope="col">Jueves</th>
+										<th scope="col">Viernes</th>
+										<th scope="col">Sabado</th>
+										<th scope="col">Domingo</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="row">7:00 - 8:00</td>
+										<th
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Lunes'}"
+											scope="row" th:each="enrollment : ${enrollments}"
+											th:text="${enrollment.section.course.name}"></th>
+										<th scope="row" th:each="enrollment : ${enrollments}"
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Martes'}"
+											th:text="${enrollment.section.course.name}"></th>
+										<th scope="row" th:each="enrollment : ${enrollments}"
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Miercoles'}"
+											th:text="${enrollment.section.course.name}"></th>
+										<th scope="row" th:each="enrollment : ${enrollments}"
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Jueves'}"
+											th:text="${enrollment.section.course.name}"></th>
+										<th scope="row" th:each="enrollment : ${enrollments}"
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Viernes'}"
+											th:text="${enrollment.section.course.name}"></th>
+										<th scope="row" th:each="enrollment : ${enrollments}"
+											th:if="${enrollment.student.id == student.id && enrollment.section.day == 'Sabado'}"
+											th:text="${enrollment.section.course.name}"></th>
+									</tr>
+									<tr>
+										<td scope="row">8:00 - 9:00</td>
+									</tr>
+									<tr>
+										<td scope="row">9:00 - 10:00</td>
+									</tr>
+									<tr>
+										<td scope="row">10:00 - 11:00</td>
+									</tr>
+									<tr>
+										<td scope="row">11:00 - 12:00</td>
+									</tr>
+									<tr>
+										<td scope="row">12:00 - 13:00</td>
+									</tr>
+									<tr>
+										<td scope="row">13:00 - 14:00</td>
+									</tr>
+									<tr>
+										<td scope="row">14:00 - 15:00</td>
+									</tr>
+
+									<tr>
+										<td scope="row">15:00 - 16:00</td>
+									</tr>
+									<tr>
+										<td scope="row">16:00 - 17:00</td>
+									</tr>
+									<tr>
+										<td scope="row">17:00 - 18:00</td>
+									</tr>
+									<tr>
+										<td scope="row">18:00 - 19:00</td>
+									</tr>
+									<tr>
+										<td scope="row">19:00 - 20:00</td>
+									</tr>
+
+									<tr>
+										<td scope="row">20:00 - 21:00</td>
+									</tr>
+
+									<tr>
+										<td scope="row">21:00 - 22:00</td>
+									</tr>
+
+									<tr>
+										<td scope="row">22:00 - 23:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Nueva Seccion</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav class="mt-3 mx-3" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/sections}">Secciones</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Crear</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Seccion
+		  </div>
+		  <div class="card-body" style="text-align: left;">
+			<form th:action="@{/sections/savenew}" th:object="${section}" method="post" class="row g-3 needs-validation" novalidate>
+				  <div class="col-md-2">
+				    <label for="id" class="form-label">Codigo</label>
+				    <input type="text" class="form-control" th:field="*{id}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+				  </div>
+				  <div class="col-md-3">
+				    <label for="course" class="form-label">Curso</label>
+				    <select class="form-select" th:field="*{course}" th:errorclass="'form-control alert-danger'">
+				      <option value="">Elige un Curso</option>
+				      <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.name}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				   <div class="col-md-4">
+				    <label for="day" class="form-label">Dia</label>
+				    <input type="text" class="form-control" th:field="*{day}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('day')}" th:errors="*{day}"></small>
+				  </div>
+				   <div class="col-md-4">
+				    <label for="startTime" class="form-label">Hora de Inicio</label>
+				    <input type="time" class="form-control" th:field="*{startTime}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></small>
+				  </div>
+				    <div class="col-md-4">
+				    <label for="endTime" class="form-label">Hora de Fin</label>
+				    <input type="time" class="form-control" th:field="*{endTime}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></small>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				  </div>
+				    <div class="col-md-4">
+				    <label for="vacancies" class="form-label">Vacantes</label>
+				    <input type="text" class="form-control" th:field="*{vacancies}" th:errorclass="'form-control alert-danger'">
+				    <small class="form-text text-danger" th:if="${#fields.hasErrors('vacancies')}" th:errors="*{vacancies}"></small>
+				  </div>
+				  
+					<div class="col-md-3">
+				    <label for="teacher" class="form-label">Profesor</label>
+				    <select class="form-select" th:field="*{teacher}" th:errorclass="'form-control alert-danger'">
+				      <option value="">Elige un Profesor</option>
+				      <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.lastName}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				  
+				  <div class="col-12" style="text-align: center;">
+				    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
+				  </div>
+				</form>
+						  
+						  
+						  
+ 		</div>
+		  
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

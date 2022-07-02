@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>StuMatch</title>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<section class="container py-4" sec:authorize="hasRole('ROLE_STUDENT')">
+		<div class="p-5 mb-4 bg-light rounded-3">
+			<div class="container-fluid py-5">
+				<h1 class="display-5 fw-bold">
+					<i class="fas fa-chalkboard-teacher"></i> BIENVENIDO A STUMATCH
+				</h1>
+				<p class="col-md-8 fs-4 mt-5 mb-5" th:text="${'Alumno: ' + student.firstName + ' ' + student.lastName}"></p>
+				<a class="btn btn-danger btn-lg" style="color: white"
+					th:href="@{/enrollments}"> Matriculate</a>
+			</div>
+		</div>
+
+	</section>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

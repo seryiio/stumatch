@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Listar Carreras</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+		<main>
+	
+	<section class ="section">
+		<nav class="mt-3 mx-3" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Carreras</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Lista de Carreras
+		  </div>
+		  <div class="card-body">
+		    
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">Codigo</th>
+				      <th scope="col">Nombre</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="career : ${careers}">
+				      <th scope="row" th:text="${career.id}"></th>
+				      <td th:text="${career.name}"></td>
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/careers/' + ${career.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/careers/' + ${career.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+						    
+		  </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/careers/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nueva Carrera</a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Error</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+
+	<div class="container mt-5 mb-5">
+
+		<div class="card bg-light text-black">
+			<div class="card-body text-center">
+				<h5 class="card-title ">Lo sentimos , NO tienes permisos para
+					acceder a este recurso.</h5>
+				<a th:href="@{/main}" class="btn btn-outline-danger" role="button">Volver</a>
+
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Lista de Studiantes</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+		<main>
+	
+	<section class ="section">
+		<nav class="mt-3 mx-3" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Estudiantes</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Estudiantes
+		  </div>
+		  <div class="card-body">
+		    
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">Codigo</th>
+				      <th scope="col">Apellidos</th>
+				      <th scope="col">Nombres</th>
+				      <th scope="col">Edad</th>
+				       <th scope="col">DNI</th>
+				       <th scope="col">Numero</th>
+				       <th scope="col">Correo Universitario</th>
+				       <th scope="col">Carrera</th>
+				       <th scope="col">Cantidad de Creditos Maximos</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="student : ${students}">
+				      <th scope="row" th:text="${student.id}"></th>
+				      <td th:text="${student.lastName}"></td>
+				      <td th:text="${student.firstName}"></td>
+				      <td th:text="${student.age}"></td>
+				      <td th:text="${student.dni}"></td>
+				      <td th:text="${student.phoneNumber}"></td>
+				      <td th:text="${student.emailUniversity}"></td>
+				      <td th:text="${student.career.name}"></td>
+				      <td th:text="${student.creditAmount}"></td>
+				      
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/students/' + ${student.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/students/' + ${student.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+						    
+		  </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/students/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nuevo Estudiante</a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

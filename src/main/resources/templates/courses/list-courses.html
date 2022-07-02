@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Listar Curso</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+		<main>
+	
+	<section class ="section">
+		<nav class="mt-3 mx-3" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Lista de Curso
+		  </div>
+		  <div class="card-body">
+		    
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">Codigo</th>
+				      <th scope="col">Nombre</th>
+				      <th scope="col">Numero de Creditos</th>
+				      <th scope="col">Ciclo</th>
+				      <th scope="col">Carrera</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="course : ${courses}">
+				      <th scope="row" th:text="${course.id}"></th>
+				      <td th:text="${course.name}"></td>
+				      <td th:text="${course.numberCredits}"></td>
+				      <td th:text="${course.numberCycle}"></td>
+				      <td th:text="${course.career.name}"></td>
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/courses/' + ${course.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/courses/' + ${course.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+						    
+		  </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/courses/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nuevo curso</a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

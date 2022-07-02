@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Editar Seccion</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<main>
+
+		<section class="section">
+			<nav class="mt-3 mx-3" aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a
+						th:href="@{/sections}">Seccion</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Editar</li>
+				</ol>
+			</nav>
+
+			<div class="card text-center">
+				<div class="card-header"></div>
+				<div class="card-body" style="text-align: left;">
+					<form th:action="@{'/sections/' + ${section.id} + '/update'}"
+						th:object="${section}" method="post" class="row g-3 needs-validation"
+						novalidate>
+						<div class="col-md-2">
+							<label for="id" class="form-label">Codigo</label> <input
+								type="text" class="form-control" th:field="*{id}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-md-4">
+							<label for="startTime" class="form-label">Hora de Inicio</label>
+							<input type="time" class="form-control" th:field="*{startTime}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-md-4">
+							<label for="endTime" class="form-label">Hora de Termino</label> <input
+								type="time" class="form-control" th:field="*{endTime}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="vacancies" class="form-label">Vacantes</label> <input
+								type="text" class="form-control" th:field="*{vacancies}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-md-3">
+							<label for="course" class="form-label">Curso</label> <select class="form-select"
+								th:field="*{course}" required>
+								<option value="">Elige un Curso</option>
+								<option th:each="course : ${courses}"
+									th:value="${course.id}"
+									th:text="${course.name}"></option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label for="teacher" class="form-label">Profesor</label> <select class="form-select"
+								th:field="*{teacher}" required>
+								<option value="">Elige un Profesor</option>
+								<option th:each="teacher : ${teachers}"
+									th:value="${teacher.id}"
+									th:text="${teacher.lastName}"></option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+						<div class="col-12" style="text-align: center;">
+							<button class="btn btn-warning" type="submit">
+								<i class="fas fa-save"></i> Editar
+							</button>
+						</div>
+					</form>
+
+
+
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+
+</body>
+</html>
