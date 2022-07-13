@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="frag-head">
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <script src="https://kit.fontawesome.com/65219acda5.js"
 	crossorigin="anonymous"></script>
@@ -82,13 +82,13 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel"
-								style="color: black">¿Listo para salir?</h5>
+								style="color: black">Â¿Listo para salir?</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body" style="color: black">Seleccione
-							"Cerrar sesión" a continuación si está listo para finalizar su
-							sesión actual.</div>
+							"Cerrar sesiÃ³n" a continuaciÃ³n si estÃ¡ listo para finalizar su
+							sesiÃ³n actual.</div>
 						<div class="modal-footer">
 							<form id="logoutForm" th:action="@{/logout}" method="post">
 								<button class="btn btn-danger"
@@ -119,15 +119,15 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">¿Listo para
+					<h5 class="modal-title" id="exampleModalLabel">Â¿Listo para
 						salir?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">Ã—</span>
 					</button>
 				</div>
-				<div class="modal-body">Seleccione "Cerrar sesión" a
-					continuación si está listo para finalizar su sesión actual.</div>
+				<div class="modal-body">Seleccione "Cerrar sesiÃ³n" a
+					continuaciÃ³n si estÃ¡ listo para finalizar su sesiÃ³n actual.</div>
 				<div class="modal-footer">
 					<form id="logoutForm" th:action="@{/logout}" method="post">
 						<button class="btn btn-danger"
