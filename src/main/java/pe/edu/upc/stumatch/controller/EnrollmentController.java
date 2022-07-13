@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +16,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.stumatch.utils.UserAuthentication;
-import pe.edu.upc.stumatch.business.crud.CareerService;
 import pe.edu.upc.stumatch.business.crud.CourseService;
 import pe.edu.upc.stumatch.business.crud.EnrollmentService;
 import pe.edu.upc.stumatch.business.crud.SectionService;
-import pe.edu.upc.stumatch.business.crud.StudentService;
-import pe.edu.upc.stumatch.model.entity.Career;
 import pe.edu.upc.stumatch.model.entity.Course;
 import pe.edu.upc.stumatch.model.entity.Enrollment;
 import pe.edu.upc.stumatch.model.entity.Section;
@@ -39,12 +35,6 @@ public class EnrollmentController {
 
 	@Autowired
 	private SectionService sectionService;
-
-	@Autowired
-	private StudentService studentService;
-
-	@Autowired
-	private CareerService careerService;
 
 	@Autowired
 	private UserAuthentication userAuthentication;

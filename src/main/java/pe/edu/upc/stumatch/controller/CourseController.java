@@ -18,12 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.stumatch.business.crud.CareerService;
 import pe.edu.upc.stumatch.business.crud.CourseService;
-import pe.edu.upc.stumatch.business.crud.SectionService;
-import pe.edu.upc.stumatch.business.crud.TeacherService;
 import pe.edu.upc.stumatch.model.entity.Career;
 import pe.edu.upc.stumatch.model.entity.Course;
-import pe.edu.upc.stumatch.model.entity.Section;
-import pe.edu.upc.stumatch.model.entity.Teacher;
 
 @Controller
 @RequestMapping("/courses")
