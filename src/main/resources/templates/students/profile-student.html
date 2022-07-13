@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout/layout :: frag-head">
+<head th:replace="layout/layout :: frag-head">
 <meta charset="ISO-8859-1">
 <title>Perfil de Estudiante</title>
 </head>
 <body>
-	<header th:replace="/layout/layout :: frag-header"></header>
+	<header th:replace="layout/layout :: frag-header"></header>
 	<div class="container">
 		<form class="mt-2 mb-2">
 			<fieldset disabled>
@@ -54,6 +54,6 @@
 				<button type="submit" class="btn btn-primary">Modificar</button>
 		</form>
 	</div>
-	<footer th:replace="/layout/layout :: frag-footer"></footer>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
 </body>
 </html>
