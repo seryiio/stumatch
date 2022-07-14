@@ -4,7 +4,7 @@
 <meta charset="ISO-8859-1">
 <title>StuMatch</title>
 <body>
-	<header th:replace="/layout/layout :: frag-header"></header>
+	<header th:replace="layout/layout :: frag-header"></header>
 	<section class="container py-4" sec:authorize="hasRole('ROLE_STUDENT')">
 		<div class="p-5 mb-4 bg-light rounded-3">
 			<div class="container-fluid py-5">

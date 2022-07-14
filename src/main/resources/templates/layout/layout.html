@@ -18,6 +18,9 @@
 }
 
 @media ( min-width : 768px) {
+	body {
+		font-size: 16px;
+	}
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
@@ -25,29 +28,31 @@
 </style>
 </head>
 <body>
-	<header th:fragment="frag-header" style="background-color: #320000; color: white">
+	<header th:fragment="frag-header"
+		style="background-color: #320000; color: white">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a href="/main"
-					class="navbar-brand">
-					<img th:src="@{/img/Logo.png}"
-					width="150px" alt="logo">
+				<a href="/main" class="navbar-brand"> <img
+					th:src="@{/img/Logo.png}" width="150px" alt="logo">
 				</a>
-				<button class="navbar-toggler" type="button" 
+				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
-					<i class="fas fa-bars fs-4" style="color:white"></i>
+					<i class="fas fa-bars fs-4" style="color: white"></i>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
-						<li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')"><a class="nav-link" style="color: white"
+						<li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')"><a
+							class="nav-link" style="color: white"
 							th:href="@{/students/profile}"> Mi Perfil</a></li>
-						<li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')"><a class="nav-link" style="color: white"
-							th:href="@{/enrollments}"> Matricula</a></li>
-						<li class="nav-item"  sec:authorize="hasRole('ROLE_STUDENT')"><a class="nav-link" style="color: white"
-							href="#"> Mis Pagos</a></li>
-						<li class="nav-item dropdown me-3"  sec:authorize="hasRole('ROLE_ADMINISTRATOR')"><a
+						<li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')"><a
+							class="nav-link" style="color: white" th:href="@{/enrollments}">
+								Matricula</a></li>
+						<li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')"><a
+							class="nav-link" style="color: white" href="#"> Mis Pagos</a></li>
+						<li class="nav-item dropdown me-3"
+							sec:authorize="hasRole('ROLE_ADMINISTRATOR')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: white"> Mantenimiento de Tablas </a>
@@ -57,16 +62,18 @@
 								<li><a class="dropdown-item" th:href="@{/sections}">Secciones</a></li>
 								<li><a class="dropdown-item" th:href="@{/teachers}">Profesores</a></li>
 								<li><a class="dropdown-item" th:href="@{/students}">Estudiantes</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown"  sec:authorize="hasRole('ROLE_ADMINISTRATOR')"><a
+								<li><a class="dropdown-item" th:href="@{/users}">Usuarios</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ADMINISTRATOR')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: white"> Reportes </a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" th:href="@{/enrollments/report}">Lista de Alumnos Matriculados</a></li>
-							</ul>
-						</li>
+								<li><a class="dropdown-item"
+									th:href="@{/enrollments/report}">Lista de Alumnos
+										Matriculados</a></li>
+							</ul></li>
 
 					</ul>
 					<button type="button" class="btn"

@@ -1,6 +1,8 @@
 package pe.edu.upc.stumatch.controller;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.stumatch.business.crud.UserService;
+import pe.edu.upc.stumatch.model.entity.Section;
 import pe.edu.upc.stumatch.model.entity.User;
 
 @Controller
@@ -27,6 +30,19 @@ public class UserController {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private UserService uService;
+	
+	@GetMapping
+	public String listUsers(Model model) {
+
+		try {
+			List<User> users = uService.getAll();
+			model.addAttribute("users", users);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "usersecurity/listUser";
+	}
 
 	@GetMapping("/new")
 	public String newUser(Model model) {		
