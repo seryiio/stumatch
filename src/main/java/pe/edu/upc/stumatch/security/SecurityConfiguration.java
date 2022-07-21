@@ -39,8 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		// Aqui realiza la configuración de los permisos
-				.antMatchers("/").permitAll()
+		// Aqui realiza la configuracion de los permisos
 				.antMatchers("/students").hasRole("ADMINISTRATOR")
 				.antMatchers("/teachers").hasRole("ADMINISTRATOR")
 				.antMatchers("/careers").hasRole("ADMINISTRATOR")
@@ -63,8 +62,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/enrollments/report").hasRole("ADMINISTRATOR")
 				
 				.antMatchers("/enrollments").hasRole("STUDENT")
-			.and()
-				.formLogin();
+				
+				.antMatchers("/main").permitAll()
+				.and()
+					.formLogin().loginPage("/login").permitAll().and().logout().permitAll().and()
+					.exceptionHandling().accessDeniedPage("/error");
 	}
 	
 	

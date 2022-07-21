@@ -20,16 +20,16 @@ public class LoginController {
 			RedirectAttributes flash) {
 
 		if (principal != null) {
-			return "redirect:/enrollments";
+			return "redirect:/main";
 		}
 
 		if (sidebar != null) {
 			model.addAttribute("error",
-					"Error en el login: Nombre de usuario o contraseña incorrecta, por favor vuelva a intentarlo!");
+					"Error en el login: Nombre de usuario o contrasena incorrecta, por favor vuelva a intentarlo!");
 		}
 
 		if (logout != null) {
-			model.addAttribute("success", "Ha cerrado sesión con éxito!");
+			model.addAttribute("success", "Ha cerrado sesion con exito!");
 		}
 
 		return "login";
