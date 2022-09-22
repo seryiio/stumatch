@@ -1,12 +1,12 @@
 server:
-  port: 8170
+  port: 8181
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://ec2-3-222-74-92.compute-1.amazonaws.com:5432/da4hu24su0r0rp
-    username: pvelwvwayoxiia
-    password: fc6ae55e5e8716013e96fb6fb4836a0b0c039429d2c682080de4b7edc0fd8210
+    url: jdbc:postgresql://ec2-52-4-87-74.compute-1.amazonaws.com/d2ral62hlqetf3
+    username: umlctamsqrqbqu
+    password: 96a0735769abdee9405e70bf2a3310e0af20f82e824bd9eb530aed8b99280bed
   jpa:
     database: postgresql
     hibernate:
